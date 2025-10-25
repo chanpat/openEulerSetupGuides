@@ -146,7 +146,7 @@ auth_gssapi_module (shared)
 ## Add a Host (A) Resource Record in DNS server
 Name  | Type  | IP 
 :---  | :---  | :--- 
-openeuler | A | 192.168.50.244<br>(openEuler IP Address)
+openeuler | A | 192.168.50.244<br>(openEuler server IP)
 ## Test SSO on web browser(MS Edge/Chrome)
 create `/opt/lampp/htdocs/tools/domain/index.php` 
 ```
