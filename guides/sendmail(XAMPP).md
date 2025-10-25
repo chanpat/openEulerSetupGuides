@@ -1,5 +1,7 @@
 # PHP Sendmail Setup with msmtp on openEuler
-**A step-by-step installation and configuration guide for sending email from PHP using msmtp on openEuler Linux**
+
+**A step-by-step installation and configuration guide for sending email from PHP using msmtp on openEuler Linux.**  
+**This guide assumes that PHP has been installed in the system.**  
 
 ## Install Required Packages
 ```
@@ -10,20 +12,20 @@ yum install tar gcc make automake autoconf nano gnutls-devel -y
 
 1. Download msmtp from the official site:
    [msmtp Download Page](https://marlam.de/msmtp/download/).   
-   Use WinSCP or similar tool to copy the archive to your server's root folder.
+   Use WinSCP or similar tool to copy the archive to the server.
 
 2. Extract the archive:
-```
-tar -xf msmtp-1.8.32.tar.xz
-```
+   ```
+   tar -xf msmtp-1.8.32.tar.xz
+   ```
 
 3. Compile and install:
-```
-cd msmtp-1.8.32
-./configure
-make
-make install
-```
+   ```
+   cd msmtp-1.8.32
+   ./configure
+   make
+   make install
+   ```
 
 ## Verify Installation
 ```
