@@ -39,66 +39,51 @@ Nginx configurations are typically stored in `/etc/nginx/conf.d/`. Create a new 
 nano /etc/nginx/conf.d/your-site.conf
 ```
 
-#### Basic Virtual Host Example
+#### Example
 ```
 server {
-    listen 80;
-    server_name www.example.com;
-    
-    root /var/www/html/example;
-    index index.html index.htm index.php;
-    
-    location / {
-        try_files $uri $uri/ =404;
-    }
-    
-    # PHP-FPM configuration (if using PHP)
-    location ~ \.php$ {
-        fastcgi_pass unix:/run/php-fpm/www.sock;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
-    }
-}
-```
-
-#### SSL/HTTPS Configuration Example
-```
-server {
-    listen 443 ssl http2;
-    server_name www.example.com;
-    
-    ssl_certificate /path/to/certificate.crt;
-    ssl_certificate_key /path/to/private.key;
-    
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_ciphers HIGH:!aNULL:!MD5;
-    
-    root /var/www/html/example;
-    index index.html index.htm index.php;
-    
-    location / {
-        try_files $uri $uri/ =404;
-    }
+    listen         80;
+    return 301 https://$host$request_uri;
 }
 
-# Redirect HTTP to HTTPS
 server {
-    listen 80;
-    server_name www.example.com;
-    return 301 https://$server_name$request_uri;
+		listen      443 ssl;
+		server_name www.your-site.com;
+
+		ssl_certificate        /etc/nginx/server.chained.crt;
+       	ssl_certificate_key    /etc/nginx/server.key;
+		
+		client_max_body_size 100m;	
+		proxy_ssl_session_reuse on;
+		ssl_protocols TLSv1.2 TLSv1.3; 
+
+		location /admin/ {
+			allow 192.168.0.0/16;
+			allow 172.18.0.0/16;
+ 			deny all;
+
+			proxy_pass http://172.18.52.19/admin/;		
+       	}
+
+		location / {
+            proxy_pass http://172.18.52.19/;		
+       	}
+
+		location /test/ {
+            proxy_pass http://172.18.52.24/test/;	
+       	}
 }
 ```
 
 > **Note:** Remove deprecated `ssl on;` directive if migrating from older configurations. Use `listen 443 ssl;` instead.
 
-## Test and Apply Configuration
-```
-nginx -t
-systemctl reload nginx
-```
+## Hide Nginx Version
+   Add to `/etc/nginx/nginx.conf` in the `http` block:
+   ```
+   server_tokens off;
+   ```
 
-## Configure Log Rotation
+## Optional: Configure Log Rotation
 Edit the logrotate configuration to adjust retention period:
 ```
 nano /etc/logrotate.d/nginx
@@ -112,26 +97,20 @@ Change the rotation period (example: keep logs for 30 days):
 }
 ```
 
-## View Nginx Logs
-```
-# Access logs
-tail -f /var/log/nginx/access.log
-
-# Error logs
-tail -f /var/log/nginx/error.log
-```
-
-## Hide Nginx Version
+## Optional: Increase client_header_buffer for long request URL
    Add to `/etc/nginx/nginx.conf` in the `http` block:
    ```
-   server_tokens off;
+   client_header_buffer_size 1m;
    ```
 
-## Common Configuration Locations
+## Test and Apply Configuration
+```
+nginx -t
+systemctl reload nginx
+```
 
-- **Main Configuration:** `/etc/nginx/nginx.conf`
-- **Virtual Host Configs:** `/etc/nginx/conf.d/*.conf`
-- **Log Files:** `/var/log/nginx/`
+## Log Files Locations
+/var/log/nginx/
 
 ## Testing with Custom Hosts File
 
@@ -145,9 +124,8 @@ notepad C:\Windows\System32\drivers\etc\hosts
 
 Add entries (replace with your server IP):
 ```
-192.168.50.244    www.example.com
-192.168.50.244    app.example.com
-192.168.50.244    api.example.com
+[Nginx_IP_Address]    www.your-site.com
+[Nginx_IP_Address]    app.your-site.com
 ```
 
 Flush DNS cache:
