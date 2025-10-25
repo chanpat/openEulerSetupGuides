@@ -84,6 +84,30 @@ Edit your `php.ini` file:
 ```
 sendmail_path = "/usr/local/bin/msmtp -C /etc/msmtprc -t"
 ```
+## Test PHP mail()
+Create `/opt/lampp/htdocs/tools/phpsendmail/index.php`
+```
+<?php
+   $to = "userABC@gmail.com";
+   $subject = "Test Email from openEuler";
+   $message = "This is a test email";
+   $headers = 'Cc: userDFG@gmail.com';
+   
+   if(mail($to, $subject, $message,  $headers)) {
+       echo "Email sent successfully!";
+   } else {
+       echo "Failed to send email.";
+   }
+   
+   // Check for errors
+   print_r(error_get_last());
+?>
+```
+Visit `http://[openEuler_IP_Address]/tools/phpsendmail/`  
+Expected output:
+```
+Email sent successfully!
+```
 
 
 
