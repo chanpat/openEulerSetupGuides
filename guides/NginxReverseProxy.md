@@ -1,5 +1,5 @@
-# Nginx as a Reverse Proxy on openEuler
-**A step-by-step installation and configuration guide for Nginx as a Reverse Proxy on openEuler Linux**
+# Nginx Reverse Proxy on openEuler
+**A step-by-step installation and configuration guide for Nginx Reverse Proxy on openEuler Linux**
 
 **Linux:** OpenEuler 24.03 LTS SP2  
 [**Download ISO**](https://repo.openeuler.org/openEuler-24.03-LTS-SP2/ISO/x86_64/openEuler-24.03-LTS-SP2-x86_64-dvd.iso)
@@ -16,16 +16,12 @@ systemctl status firewalld
 
 #### Installation
 ```
-yum install nginx -y
+yum install nginx
 ```
 
 #### Verification
 ```
 nginx -v
-```
-Expected output example:
-```
-nginx version: nginx/1.24.0
 ```
 
 #### Start Nginx & Setup Autostart
@@ -135,8 +131,6 @@ tail -f /var/log/nginx/error.log
 
 - **Main Configuration:** `/etc/nginx/nginx.conf`
 - **Virtual Host Configs:** `/etc/nginx/conf.d/*.conf`
-- **Default Document Root:** `/usr/share/nginx/html`
-- **Custom Document Roots:** `/var/www/html/`
 - **Log Files:** `/var/log/nginx/`
 
 ## Testing with Custom Hosts File
