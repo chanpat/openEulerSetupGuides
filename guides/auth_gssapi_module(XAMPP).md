@@ -39,16 +39,16 @@ Edit `/etc/krb5.conf` and configure your realm:
 > **Important:** Remove the line `includedir /etc/krb5.conf.d/` to avoid repeated credential prompts.
 
 ## Active Directory Service Account Setup
-open CMD
+
 1. **Create AD service account:**
-   - New user: `http-openeuler`
+   - AD New user: `http-openeuler`
 2. **Register ServicePrincipalName (SPN):**
-   - `setspn -S HTTP/openeuler.abc.org.mo http-openeuler`
+   - cmd: `setspn -S HTTP/openeuler.abc.org.mo http-openeuler`
 3. **Verify SPN registration:**
-   - `setspn -L http-openeuler`
-   - `setspn -Q HTTP/openeuler.abc.org.mo`
+   - cmd: `setspn -L http-openeuler`
+   - cmd: `setspn -Q HTTP/openeuler.abc.org.mo`
 4. **Remove SPN (if needed):**
-   - `setspn -D HTTP/openeuler.abc.org.mo http-openeuler`
+   - cmd: `setspn -D HTTP/openeuler.abc.org.mo http-openeuler`
 
 ## Generate Kerberos Keytab
 
