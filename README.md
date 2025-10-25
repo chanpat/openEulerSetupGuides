@@ -4,7 +4,7 @@ This repository provides step-by-step setup guides for deploying popular web and
 ## Available Setup Guides
 
 - [LAMP Stack & phpMyAdmin](guides/LAMP+phpMyAdmin.md)
-- [Nginx Reverse Proxy]("guides/Nginx&#32;Reverse&#32;Proxy.md")
+- [Nginx Reverse Proxy](guides/Nginx&#32;Reverse&#32;Proxy.md)
 - [XAMPP Stack](guides/XAMPP.md)
 - [Apache mod_auth_gssapi (Kerberos SSO)](guides/XAMPP&#32;-&#32;auth_gssapi_module.md)
 - [PHP Sendmail with msmtp](guides/XAMPP&#32;-&#32;PHP&#32;sendmail.md)
