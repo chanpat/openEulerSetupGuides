@@ -1,7 +1,7 @@
 # PHP Sendmail Setup with msmtp on openEuler
 
 **A step-by-step installation and configuration guide for sending email from PHP using msmtp on openEuler Linux.**  
-**This guide assumes that PHP has been installed in the system.**  
+**This guide assumes that XAMPP has been installed in the system.**  
 
 ## Install Required Packages
 ```
