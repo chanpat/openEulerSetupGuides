@@ -54,6 +54,10 @@ Edit `/opt/lampp/etc/extra/httpd-xampp.conf` to restrict access to phpMyAdmin:
 </Directory>
 ...
 ```
+## Login phpMyAdmin
+1. Login phpMyAdmin: `http://[openEuler IP Address]/phpmyadmin`
+2. Set root@Localhost Password
+3. Create pma account and set Password
 
 ## Configure phpMyAdmin Authentication
 
@@ -90,15 +94,6 @@ Reload systemd and enable autostart:
 sudo systemctl daemon-reload
 sudo systemctl enable xampp.service
 ```
-
-## Configure MariaDB for Lowercase Table Names
-
-Edit `/opt/lampp/etc/my.cnf` and add:
-```
-[mysqld]
-lower_case_table_names = 1
-```
-
 ## Enable Case-Insensitive URLs in Apache
 
 Edit `/opt/lampp/etc/httpd.conf`:
@@ -112,6 +107,16 @@ LoadModule speling_module modules/mod_speling.so
     ...
 </Directory>
 ```
+
+## Configure MariaDB for Lowercase Table Names
+
+Edit `/opt/lampp/etc/my.cnf` and add:
+```
+[mysqld]
+lower_case_table_names = 1
+```
+
+
 
 ## Log Files Locations
 
