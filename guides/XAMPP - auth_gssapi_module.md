@@ -147,7 +147,7 @@ auth_gssapi_module (shared)
 Name  | Type  | IP 
 :---  | :---  | :--- 
 openeuler | A | 192.168.50.244<br>(openEuler IP Address)
-## Test
+## Test SSO on web browser(MS Edge/Chrome)
 create `/opt/lampp/htdocs/tools/domain/index.php` 
 ```
 <?php
