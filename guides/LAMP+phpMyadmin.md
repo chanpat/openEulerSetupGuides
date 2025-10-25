@@ -1,9 +1,6 @@
 # LAMP Stack & phpMyAdmin on openEuler
 **a step by step Installation guide for LAMP Stack and phpMyAdmin on openEuler Linux**   
 
-**Linux:** OpenEuler 24.03 LTS SP2  
-[**Download ISO**](https://repo.openeuler.org/openEuler-24.03-LTS-SP2/ISO/x86_64/openEuler-24.03-LTS-SP2-x86_64-dvd.iso)  
-
 ## Disable Firewall
 ```
 systemctl stop firewalld
