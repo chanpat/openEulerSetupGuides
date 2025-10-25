@@ -1,4 +1,4 @@
-# openEulerSetupGuides
+# openEuler Setup Guides
 Setup Guides for openEuler
 
 **Linux:** OpenEuler 24.03 LTS SP2  
