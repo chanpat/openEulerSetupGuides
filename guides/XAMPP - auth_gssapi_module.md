@@ -143,4 +143,21 @@ Expected output:
 ```
 auth_gssapi_module (shared)
 ```
-
+## Add a Host (A) Resource Record in DNS server
+Name  | Type  | IP 
+:---  | :---  | :--- 
+openeuler | A | 192.168.50.244<br>(openEuler IP Address)
+## Test
+create `/opt/lampp/htdocs/tools/domain/index.php` 
+```
+<?php
+echo "Remote User: " . ($_SERVER['REMOTE_USER'] ?? 'NOT SET');
+echo "<br>Auth User: " . ($_SERVER['PHP_AUTH_USER'] ?? 'NOT SET');
+?>
+```
+Visit `http://openeuler/tools/domain`  
+Expected output:
+```
+Remote User: logged_in_username@ABC.ORG.MO
+Auth User: logged_in_username@ABC.ORG.MO
+```
