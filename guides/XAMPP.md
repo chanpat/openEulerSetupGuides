@@ -12,7 +12,7 @@ systemctl status firewalld
 ## Install XAMPP
 
 #### Transfer Installer
-Use WinSCP or similar tool to copy the XAMPP installer to your server's root folder:
+Use WinSCP or similar tool to copy the <a target="_blank" href="https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/8.2.12/xampp-linux-x64-8.2.12-0-installer.run/download">XAMPP installer</a> to your server's root folder:
 ```
 xampp-linux-x64-8.2.12-0-installer.run
 ```
@@ -44,6 +44,7 @@ yum install libnsl
 
 Edit `/opt/lampp/etc/extra/httpd-xampp.conf` to restrict access to phpMyAdmin:
 ```
+...
 <Directory "/opt/lampp/phpmyadmin">
     AllowOverride AuthConfig Limit
     Require ip 192.168.50.0/255.255.255.0
@@ -51,15 +52,18 @@ Edit `/opt/lampp/etc/extra/httpd-xampp.conf` to restrict access to phpMyAdmin:
     Require local
     ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var
 </Directory>
+...
 ```
 
 ## Configure phpMyAdmin Authentication
 
 Edit `/opt/lampp/phpmyadmin/config.inc.php`:
 ```
+...
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 $cfg['Servers'][$i]['controluser'] = 'pma';
 $cfg['Servers'][$i]['controlpass'] = 'your_password';
+...
 ```
 
 ## Setup XAMPP as a Systemd Service (Autostart)
@@ -99,12 +103,13 @@ lower_case_table_names = 1
 
 Edit `/opt/lampp/etc/httpd.conf`:
 ```
+# Uncomment:
 LoadModule speling_module modules/mod_speling.so
-
+...
 <Directory "/opt/lampp/htdocs">
     CheckSpelling on
     CheckCaseOnly on
-    # ... existing configuration ...
+    ...
 </Directory>
 ```
 
