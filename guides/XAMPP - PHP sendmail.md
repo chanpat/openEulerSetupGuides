@@ -103,7 +103,7 @@ Create `/opt/lampp/htdocs/tools/phpsendmail/index.php`
    print_r(error_get_last());
 ?>
 ```
-Visit `http://[openEuler_IP_Address]/tools/phpsendmail/`  
+Visit `http://[openEuler_server_IP]/tools/phpsendmail/`  
 Expected output:
 ```
 Email sent successfully!
