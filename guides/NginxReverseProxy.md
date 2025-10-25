@@ -1,9 +1,6 @@
 # Nginx Reverse Proxy on openEuler
 **A step-by-step installation and configuration guide for Nginx Reverse Proxy on openEuler Linux**
 
-**Linux:** OpenEuler 24.03 LTS SP2  
-[**Download ISO**](https://repo.openeuler.org/openEuler-24.03-LTS-SP2/ISO/x86_64/openEuler-24.03-LTS-SP2-x86_64-dvd.iso)
-
 ## Disable Firewall
 ```
 systemctl stop firewalld
