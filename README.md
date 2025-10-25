@@ -1,5 +1,5 @@
 # openEuler Setup Guides
-Setup Guides for openEuler
+This repository provides step-by-step setup guides for deploying popular web and infrastructure stacks on openEuler Linux 
 
 ## Available Setup Guides
 
