@@ -1,5 +1,6 @@
 # Apache mod_auth_gssapi (Kerberos SSO) on XAMPP
-**A step-by-step installation and configuration guide for Apache mod_auth_gssapi on openEuler Linux (XAMPP)**
+**A step-by-step installation and configuration guide for Apache mod_auth_gssapi on openEuler Linux.**  
+**This guide assumes that XAMPP has been installed in the system.**
 
 ## Install Required Packages
 ```
