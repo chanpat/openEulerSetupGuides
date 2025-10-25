@@ -1,4 +1,4 @@
-# Apache mod_auth_gssapi (Kerberos SSO) on openEuler
+# Apache mod_auth_gssapi (Kerberos SSO) on XAMPP
 **A step-by-step installation and configuration guide for Apache mod_auth_gssapi on openEuler Linux (XAMPP)**
 
 ## Install Required Packages
@@ -56,9 +56,13 @@ Use `ktutil` to generate `/opt/lampp/etc/http.keytab`:
 ```
 ktutil
 ktutil: addent -password -p HTTP/openeuler.abc.org.mo@ABC.ORG.MO -k 1 -e aes256-cts-hmac-sha1-96
+ktutil: [Enter AD service account password]
 ktutil: addent -password -p HTTP/openeuler.abc.org.mo@ABC.ORG.MO -k 1 -e rc4-hmac
+ktutil: [Enter AD service account password]
 ktutil: addent -password -p http-openeuler@ABC.ORG.MO -k 1 -e aes256-cts-hmac-sha1-96
+ktutil: [Enter AD service account password]
 ktutil: addent -password -p http-openeuler@ABC.ORG.MO -k 1 -e rc4-hmac
+ktutil: [Enter AD service account password]
 ktutil: list
 ktutil: wkt /opt/lampp/etc/http.keytab
 ktutil: quit
@@ -106,9 +110,10 @@ LoadModule auth_gssapi_module modules/mod_auth_gssapi.so
 ```
 
 ## Configure GSSAPI Authentication for a Directory
-
-Example for `/opt/lampp/htdocs/tools/domain`:
+Edit `/opt/lampp/etc/httpd.conf`  
+>Example for `/opt/lampp/htdocs/tools/domain`:
 ```
+...
 <Directory "/opt/lampp/htdocs/tools/domain">
     AllowOverride all
     Options None
@@ -121,6 +126,7 @@ Example for `/opt/lampp/htdocs/tools/domain`:
 
     Require valid-user
 </Directory>
+...
 ```
 
 ## Restart Apache (XAMPP)
