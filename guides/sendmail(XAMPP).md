@@ -9,17 +9,17 @@ yum install tar gcc make automake autoconf nano gnutls-devel -y
 ## Download and Install msmtp
 
 1. Download msmtp from the official site:
-   [msmtp Download Page](https://marlam.de/msmtp/download/)
-   Use WinSCP or similar tool to copy the archive to your server's root folder
+   [msmtp Download Page](https://marlam.de/msmtp/download/).   
+   Use WinSCP or similar tool to copy the archive to your server's root folder.
 
 2. Extract the archive:
 ```
 tar -xf msmtp-1.8.32.tar.xz
-cd msmtp-1.8.32
 ```
 
 3. Compile and install:
 ```
+cd msmtp-1.8.32
 ./configure
 make
 make install
@@ -65,6 +65,11 @@ protocol smtp
 chown daemon:daemon /etc/msmtprc
 chmod 600 /etc/msmtprc
 ```
+## Setup msmtp Log File
+```
+touch /var/log/msmtp.log
+chmod 666 /var/log/msmtp.log
+```
 
 ## Test msmtp from Terminal
 ```
@@ -78,9 +83,5 @@ Edit your `php.ini` file:
 sendmail_path = "/usr/local/bin/msmtp -C /etc/msmtprc -t"
 ```
 
-## Setup msmtp Log File
-```
-touch /var/log/msmtp.log
-chmod 666 /var/log/msmtp.log
-```
+
 
