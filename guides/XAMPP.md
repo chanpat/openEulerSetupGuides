@@ -62,7 +62,7 @@ Edit `/opt/lampp/phpmyadmin/config.inc.php`:
 ...
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 $cfg['Servers'][$i]['controluser'] = 'pma';
-$cfg['Servers'][$i]['controlpass'] = 'your_password';
+$cfg['Servers'][$i]['controlpass'] = 'pma_password';
 ...
 ```
 
