@@ -12,11 +12,7 @@ systemctl status firewalld
 ## Install XAMPP
 
 #### Transfer Installer
-Use WinSCP or similar tool to copy the <a target="_blank" href="https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/8.2.12/xampp-linux-x64-8.2.12-0-installer.run/download">XAMPP installer</a> to your server's root folder:
-```
-xampp-linux-x64-8.2.12-0-installer.run
-```
-
+Use WinSCP or similar tool to copy the <a target="_blank" href="https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/8.2.12/xampp-linux-x64-8.2.12-0-installer.run/download">XAMPP installer</a> to your server.
 #### Make Installer Executable
 ```
 chmod +x xampp-linux-x64-8.2.12-0-installer.run
