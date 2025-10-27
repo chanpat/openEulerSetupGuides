@@ -119,7 +119,7 @@ Edit `/etc/httpd/conf/httpd.conf`
 
     AuthType GSSAPI
     AuthName "GSSAPI Single Sign-On Login"
-    GssapiCredStore keytab:/opt/lampp/etc/http.keytab
+    GssapiCredStore keytab:/etc/http.keytab
 
     Require valid-user
 </Directory>
