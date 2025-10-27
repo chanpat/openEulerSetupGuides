@@ -2,6 +2,18 @@
 **A step-by-step installation and configuration guide for Apache mod_auth_gssapi on openEuler Linux.**  
 **This guide assumes that LAMPP stack has been installed in the system.**
 
+## Active Directory Service Account Setup
+
+1. **Create AD service account:**
+   - AD New user: `http-openeuler`
+2. **Register ServicePrincipalName (SPN):**
+   - cmd: `setspn -S HTTP/openeuler.abc.org.mo http-openeuler`
+3. **Verify SPN registration:**
+   - cmd: `setspn -L http-openeuler`
+   - cmd: `setspn -Q HTTP/openeuler.abc.org.mo`
+4. **Remove SPN (if needed):**
+   - cmd: `setspn -D HTTP/openeuler.abc.org.mo http-openeuler`
+
 ## Install Required Packages
 ```
 yum install mod_auth_gssapi krb5-client
@@ -38,18 +50,6 @@ Edit `/etc/krb5.conf` and configure your realm:
     abc.org.mo = ABC.ORG.MO
 ```
 > **Important:** Remove the line `includedir /etc/krb5.conf.d/` to avoid repeated credential prompts.
-
-## Active Directory Service Account Setup
-
-1. **Create AD service account:**
-   - AD New user: `http-openeuler`
-2. **Register ServicePrincipalName (SPN):**
-   - cmd: `setspn -S HTTP/openeuler.abc.org.mo http-openeuler`
-3. **Verify SPN registration:**
-   - cmd: `setspn -L http-openeuler`
-   - cmd: `setspn -Q HTTP/openeuler.abc.org.mo`
-4. **Remove SPN (if needed):**
-   - cmd: `setspn -D HTTP/openeuler.abc.org.mo http-openeuler`
 
 ## Generate Kerberos Keytab
 
